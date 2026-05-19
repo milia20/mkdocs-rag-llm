@@ -12,7 +12,6 @@ from typing import Any
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, PointStruct, VectorParams
-
 from src.core.exceptions import QdrantError
 
 logger = logging.getLogger(__name__)

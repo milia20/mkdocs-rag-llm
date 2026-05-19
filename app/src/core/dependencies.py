@@ -7,11 +7,9 @@ enabling better testability and separation of concerns.
 
 from __future__ import annotations
 
-from functools import lru_cache
 from typing import Annotated
 
 from fastapi import Depends
-
 from src.core.config import Settings, get_settings
 from src.services.embedding_service import EmbeddingService
 from src.services.llm_client import LLMClient
@@ -21,10 +19,10 @@ from src.services.qdrant_service import QdrantService
 def get_qdrant_service(settings: Annotated[Settings, Depends(get_settings)]) -> QdrantService:
     """
     Dependency provider for Qdrant service.
-    
+
     Args:
         settings: Application settings injected via Depends.
-        
+
     Returns:
         Configured QdrantService instance.
     """
@@ -38,10 +36,10 @@ def get_qdrant_service(settings: Annotated[Settings, Depends(get_settings)]) -> 
 def get_embedding_service(settings: Annotated[Settings, Depends(get_settings)]) -> EmbeddingService:
     """
     Dependency provider for embedding service.
-    
+
     Args:
         settings: Application settings injected via Depends.
-        
+
     Returns:
         Configured EmbeddingService instance.
     """
@@ -51,10 +49,10 @@ def get_embedding_service(settings: Annotated[Settings, Depends(get_settings)]) 
 def get_llm_client(settings: Annotated[Settings, Depends(get_settings)]) -> LLMClient:
     """
     Dependency provider for LLM client.
-    
+
     Args:
         settings: Application settings injected via Depends.
-        
+
     Returns:
         Configured LLMClient instance.
     """

@@ -145,7 +145,7 @@ def mock_embedding_vector() -> list[float]:
 
 
 @pytest.fixture
-def app_client() -> Generator[TestClient, None, None]:
+def app_client() -> Generator[TestClient]:
     """
     Тестовый клиент FastAPI приложения.
 
@@ -153,9 +153,9 @@ def app_client() -> Generator[TestClient, None, None]:
         TestClient для тестирования API.
     """
     from src.main import app
-
     # Initialize Qdrant service in memory mode before creating the client
     from src.services.qdrant_service import get_qdrant_service
+
     get_qdrant_service(in_memory=True)
 
     with TestClient(app, raise_server_exceptions=False) as client:
@@ -243,7 +243,9 @@ def test_env_vars(monkeypatch: pytest.MonkeyPatch, test_config: dict[str, Any]) 
     """
     # Note: qdrant_url is set to ":memory:" but won't be used since we initialize
     # the service with in_memory=True directly in the fixtures
-    monkeypatch.setenv("RAG_QDRANT_URL", "http://localhost:6333")  # Dummy value, not used in memory mode
+    monkeypatch.setenv(
+        "RAG_QDRANT_URL", "http://localhost:6333"
+    )  # Dummy value, not used in memory mode
     monkeypatch.setenv("RAG_QDRANT_COLLECTION", test_config["qdrant_collection"])
     monkeypatch.setenv("RAG_EMBEDDING_MODEL", test_config["embedding_model"])
     monkeypatch.setenv("RAG_LLM_PROVIDER", test_config["llm_provider"])

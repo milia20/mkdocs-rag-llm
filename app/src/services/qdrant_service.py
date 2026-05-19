@@ -11,9 +11,7 @@ import logging
 from typing import Any
 
 from qdrant_client.models import PointStruct
-
 from src.core.config import settings
-from src.core.exceptions import QdrantError
 from src.infrastructure.qdrant_client import QdrantClientWrapper
 
 logger = logging.getLogger(__name__)

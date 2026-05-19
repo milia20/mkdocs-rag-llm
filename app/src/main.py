@@ -13,7 +13,6 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from src.api import chat, health, index, models, query, search
 from src.core.config import settings
 from src.middleware.error_handler import register_exception_handlers

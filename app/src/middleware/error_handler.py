@@ -11,15 +11,8 @@ from typing import Any
 
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
-from src.core.exceptions import (
-    ConfigurationError,
-    DocumentProcessingError,
-    EmbeddingError,
-    LLMError,
-    QdrantError,
-    RAGException,
-    SearchError,
-)
+from src.core.exceptions import (ConfigurationError, DocumentProcessingError, EmbeddingError, LLMError, QdrantError,
+                                 RAGException, SearchError)
 
 logger = logging.getLogger(__name__)
 
